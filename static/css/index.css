@@ -25,10 +25,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: 'Roboto Mono', monospace;
-    background-color: var(--background-color);
+    background: linear-gradient(to right, #00BCD4, #009688, #4CAF50, #FFEB3B, #FF9800, #E91E63);
     color: var(--text-color);
     line-height: 1.6;
     padding: 20px;
@@ -43,6 +42,8 @@ body {
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
+
+
 
 h1 {
     text-align: center;
