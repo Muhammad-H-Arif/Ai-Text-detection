@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>AI Content Detector</title>
+    <link rel="stylesheet" href="../static/css/index.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>AI Content Detector</h1>
+      <form action="/" method="post" id="form" enctype="multipart/form-data">
+        <div class="form-group">
+          <div
+            id="progress-bar-container"
+            style="display: none; margin: 10px 0px"
+          >
+            <div id="progress-bar"></div>
+          </div>
+
+          <label for="text">Your Text:</label>
+          <textarea
+            id="text"
+            name="text"
+            rows="10"
+            placeholder="Paste your text here"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="file">Upload File:</label>
+          <div>
+            <input type="file" id="file" name="file" />
+          </div>
+        </div>
+        <div class="form-group">
+          <input id="submit" type="submit" value="Analyze" />
+        </div>
+      </form>
+
+      <!-- Place this section where you want to display the results in your HTML body -->
+      {% if ai_percentage is not none and human_percentage is not none %}
+      <div class="results">
+        <h2>Result:</h2>
+        <div class="result_Style">
+          <p>
+            AI-generated content:
+            <span
+              class="percentage-value"
+              style="color: {{ 'red' if ai_percentage > 25 else 'green' }};"
+            >
+              {{ ai_percentage | round(1, 'floor') }}% ({{ 'Warning' if
+              ai_percentage > 25 else 'Understandable but need improvement' }})
+            </span>
+          </p>
+          <p>
+            Human-written content: {{ human_percentage | round(1, 'floor') }}%
+          </p>
+        </div>
+        <div>
+          <p id="Status"></p>
+        </div>
+
+        <div class="highlighted-text">
+          {% for sentence in highlighted_text %} {{ sentence | safe }} {% endfor
+          %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+  <script src="../static/js/index.js"></script>
+</html>
