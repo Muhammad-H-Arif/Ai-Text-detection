@@ -1,4 +1,4 @@
-THis code is build using the python and the FLASK for the frontend
+This code is build using the python and the FLASK for the frontend
 
 
 ## APPLIATION PREVIEW
